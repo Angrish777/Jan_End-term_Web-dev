@@ -1,0 +1,124 @@
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+    color: #00ff41;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header#stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid #00ff41;
+    border-radius: 5px;
+}
+
+#restart-btn {
+    background: #00ff41;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.card-front {
+    background: #333;
+    color: #00ff41;
+    border: 1px solid #00ff41;
+}
+
+.card-back {
+    background: #111;
+    color: #ff0080;
+    border: 1px solid #ff0080;
+    transform: rotateY(180deg);
+}
+
+
+.card-back.hex-colored {
+    color: #fff; 
+    font-size: 12px; 
+}
+
+.success {
+    background: rgba(0, 255, 65, 0.3) !important;
+    animation: glow 0.5s ease-in-out;
+}
+
+.failed {
+    background: rgba(255, 0, 0, 0.3) !important;
+    animation: glitch 0.5s ease-in-out;
+}
+
+.glitch {
+    animation: glitch 0.5s ease-in-out;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px #00ff41; }
+    50% { box-shadow: 0 0 20px #00ff41; }
+    100% { box-shadow: 0 0 10px #00ff41; }
+}
+
+@keyframes glitch {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
